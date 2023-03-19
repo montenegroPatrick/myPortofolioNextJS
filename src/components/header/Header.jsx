@@ -61,7 +61,7 @@ export default function Header() {
   );
 
   return (
-    <Navbar className="mx-auto max-w-screen-xl py-2 px-4 lg:px-8 lg:py-4  bg-black border-none">
+    <Navbar className=" fixed mx-auto max-w-screen-xl py-2 px-4 lg:px-8 lg:py-4  bg-black border-none">
       <div className="container mx-auto flex items-center justify-between text-gray-50">
         <Typography
           as="a"

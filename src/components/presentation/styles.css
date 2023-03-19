@@ -1,18 +1,10 @@
 .parallax {
     /* The image used */
-    background-image: url('https://media.licdn.com/dms/image/D4E16AQEMI1xmAtaEUw/profile-displaybackgroundimage-shrink_350_1400/0/1673188621555?e=1684368000&v=beta&t=VCwGjRLcR-i7bt8OepR9ME8nSedbtJdxChiLkKZz7Bw');
+    background: url('https://media.licdn.com/dms/image/D4E16AQEMI1xmAtaEUw/profile-displaybackgroundimage-shrink_350_1400/0/1673188621555?e=1684368000&v=beta&t=VCwGjRLcR-i7bt8OepR9ME8nSedbtJdxChiLkKZz7Bw');
   
     /* Full height */
     height: 50%; 
   
     /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  @media only screen and (max-device-width: 1366px) {
-    .parallax {
-      background-attachment: scroll;
-    }
+
   }
