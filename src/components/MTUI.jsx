@@ -1,5 +1,5 @@
 "use client";
 
-import { ThemeProvider } from "@material-tailwind/react";
+import { ThemeProvider, Button, Input } from "@material-tailwind/react";
 
-export { ThemeProvider };
+export { ThemeProvider, Button, Input };

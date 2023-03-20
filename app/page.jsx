@@ -7,6 +7,7 @@ import ProjectSlider from "@/src/components/project/projectSlider";
 import ProjectPrez from "@/src/components/project/projectSlider";
 import Footer from "@/src/components/footer/footer";
 import axios from "axios";
+import { create } from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +16,7 @@ export default async function Home() {
   const api = axios.create({
     baseURL: "https://api.github.com",
     headers: {
-      Authorization: "Bearer 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",
+      Authorization: "Bearer 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",
     },
   });
   await api
