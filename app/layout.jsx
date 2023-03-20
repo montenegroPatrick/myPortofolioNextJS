@@ -1,7 +1,9 @@
+import Footer from "@/src/components/footer/footer";
 import Header from "@/src/components/header/Header";
 import BackgroundImagePrez from "@/src/components/presentation/image";
 import ProjectPrez from "@/src/components/project/projectSlider";
 import axios from "axios";
+import { Children, cloneElement } from "react";
 import { ThemeProvider } from "../src/components/MTUI";
 import "./globals.css";
 
@@ -11,23 +13,9 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  let repos;
-  await axios
-    .get("https://api.github.com/users/montenegroPatrick/repos", {
-      Authorization: "Bearer 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",
-    })
-    .then((res) => (repos = res.data))
-    .catch((err) => Error());
   return (
-    <ThemeProvider>
-      <html lang="en">
-        <body>
-          <Header />
-          <BackgroundImagePrez />
-          {children}
-          <ProjectPrez repos={repos} />
-        </body>
-      </html>
-    </ThemeProvider>
+    <html lang="en">
+      <body className="dark w-screen">{children}</body>
+    </html>
   );
 }

@@ -9,7 +9,9 @@ import {
   Avatar,
 } from "@material-tailwind/react";
 import Link from "next/link";
-import next from "../../../public/next.svg";
+import logo from "../../../public/logo.png";
+import "./style.css";
+import Image from "next/image";
 
 export default function Header() {
   const [openNav, setOpenNav] = useState(false);
@@ -43,16 +45,19 @@ export default function Header() {
     },
   ];
   const navList = (
-    <ul className="mb-4 mt-2 float-right text-right flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-right lg:gap-6 ">
+    <ul className="mb-4 mt-2 p-4 flex gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-right lg:gap-4 ">
       {links.map((link) => (
         <Typography
           key={link.id}
           as="li"
           variant="small"
           color="blue-gray"
-          className="text-gray-50 font-body mr-5 hover:-translate-y-1 hover:scale-110 duration-100"
+          className=" text-white text-sm lg:text-lg font-body mr-5 hover:-translate-y-1 hover:scale-110 duration-100 dark:text-white"
         >
-          <Link href={link.url} className="mr-5 ">
+          <Link
+            href={link.url}
+            className="shadow-text p-3 bg-black/[0.3] rounded-lg"
+          >
             {link.name}
           </Link>
         </Typography>
@@ -61,15 +66,15 @@ export default function Header() {
   );
 
   return (
-    <Navbar className=" fixed mx-auto max-w-screen-xl py-2 px-4 lg:px-8 lg:py-4  bg-black border-none">
-      <div className="container mx-auto flex items-center justify-between text-gray-50">
+    <nav className="nav p-5 w-screen fixed mb-2 rounded-lg lg:w-screen py-2 px-4 lg:px-6 lg:py-2 z-10">
+      <div className="mx-auto flex items-center justify-between text-gray-50">
         <Typography
           as="a"
           href="#"
           variant="small"
           className="mr-4 cursor-pointer py-1.5 font-normal"
         >
-          <Avatar src={next} alt="avatar" />
+          <Image src={logo} width={30} height={30} alt="avatar" />
         </Typography>
         <div className="hidden lg:block">{navList}</div>
         <IconButton
@@ -111,8 +116,8 @@ export default function Header() {
         </IconButton>
       </div>
       <MobileNav open={openNav}>
-        <div className="container float-right text-right">{navList}</div>
+        <div className="flex justify-end">{navList}</div>
       </MobileNav>
-    </Navbar>
+    </nav>
   );
 }

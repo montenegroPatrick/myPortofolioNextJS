@@ -8,3 +8,11 @@
     /* Create the parallax scrolling effect */
 
   }
+  .persentation {
+    background: rgb(167,167,170);
+    background: linear-gradient(90deg, rgba(167,167,170,1) 0%, rgba(27,26,26,1) 0%, rgba(25,36,70,1) 33%, rgba(27,30,66,1) 64%, rgba(0,0,0,1) 100%);
+    background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
+  }
