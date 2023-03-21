@@ -16,22 +16,19 @@ export default async function Home() {
   const api = axios.create({
     baseURL: "https://api.github.com",
     headers: {
-      Authorization: "Bearer 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",
+      Authorization: "Bearer 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",
     },
   });
   await api
-    .get("/users/montenegroPatrick/repos")
-    .then((res) => (repos = res.data))
+    .get("/users/montenegroPatrick/repos?visibility=public")
+    .then((res) => console.log(res)((repos = res.data)))
     .catch((err) => Error());
-
   return (
-    <main className="linear">
-      <Header />
+    <main className="">
       <section className="h-full">
         <BackgroundImagePrez />
       </section>
       <ProjectPrez className="dark:bg-black" repos={repos} />
-      <Footer />
     </main>
   );
 }

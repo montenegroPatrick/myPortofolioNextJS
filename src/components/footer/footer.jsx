@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 import { BsFacebook, BsGithub, BsLinkedin } from "react-icons/bs";
 function Footer() {
   return (

@@ -9,6 +9,8 @@ import {
   Avatar,
 } from "@material-tailwind/react";
 import Link from "next/link";
+
+import { BsFacebook, BsGithub, BsLinkedin } from "react-icons/bs";
 import logo from "../../../public/logo.png";
 import "./style.css";
 import Image from "next/image";
@@ -24,24 +26,19 @@ export default function Header() {
   }, []);
   const links = [
     {
-      url: "/about",
-      name: "about",
+      url: "/",
+      name: "portofolio",
       id: "1",
-    },
-    {
-      url: "/projets",
-      name: "projets",
-      id: "2",
     },
     {
       url: "/contact",
       name: "contact",
-      id: "3",
+      id: "2",
     },
     {
       url: "/cv",
       name: "cv",
-      id: "4",
+      id: "3",
     },
   ];
   const navList = (
@@ -66,16 +63,31 @@ export default function Header() {
   );
 
   return (
-    <nav className="nav p-5 w-screen fixed mb-2 rounded-lg lg:w-screen py-2 px-4 lg:px-6 lg:py-2 z-10">
-      <div className="mx-auto flex items-center justify-between text-gray-50">
-        <Typography
-          as="a"
-          href="#"
-          variant="small"
-          className="mr-4 cursor-pointer py-1.5 font-normal"
-        >
-          <Image src={logo} width={30} height={30} alt="avatar" />
-        </Typography>
+    <nav className="p-5 mx-2 my-2 w-screen fixed mb-2 rounded-lg lg:w-screen py-2 px-4 lg:px-6 lg:py-2 z-10">
+      <div className="flex justify-between text-gray-50">
+        <div className="w-96 ml-10 justify-between flex flex-row cursor-pointer p-5">
+          <Link
+            href="https://github.com/montenegroPatrick"
+            target="_blank"
+            alt="github"
+          >
+            <BsGithub className="text-white lg:w-5 lg:h-5" />
+          </Link>
+          <Link
+            href="https://www.facebook.com/patrick.montenegro2b/"
+            alt="facebook"
+            target="_blank"
+          >
+            <BsFacebook className="text-white lg:w-5 lg:h-5" />
+          </Link>{" "}
+          <Link
+            href="https://www.linkedin.com/feed/"
+            alt="linkedIn"
+            target="_blank"
+          >
+            <BsLinkedin className="text-white lg:w-5 lg:h-5" />
+          </Link>
+        </div>
         <div className="hidden lg:block">{navList}</div>
         <IconButton
           variant="text"

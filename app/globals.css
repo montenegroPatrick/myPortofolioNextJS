@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
  :root {
 max-width: 100vw;
 max-height: 100vh; 
+font-family: var(--font-cantarell)
 }
 .linear {
   background: rgb(167,167,170);

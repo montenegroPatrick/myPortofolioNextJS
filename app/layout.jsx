@@ -6,6 +6,7 @@ import axios from "axios";
 import { Children, cloneElement } from "react";
 import { ThemeProvider } from "../src/components/MTUI";
 import "./globals.css";
+import { cantarell } from "./fonts";
 
 export const metadata = {
   title: "Portofolio",
@@ -15,7 +16,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="dark w-screen">{children}</body>
+      <body className={`dark w-screen linear ${cantarell.variable}`}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
