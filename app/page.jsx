@@ -1,16 +1,14 @@
-import { Inter } from "next/font/google";
+"use client";
+import { useQuery } from "@tanstack/react-query";
+import BackgroundImagePrez from "@/src/components/presentation/image";
+import ProjectPrez from "@/src/components/project/projectSlider";
 import axios from "axios";
-import Main from "@/src/components/main/main";
-import Header from "@/src/components/header/Header";
-import Footer from "@/src/components/footer/footer";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default async function Home() {
-  console.log(repos);
+export default function Home() {
   return (
-    <div>
-      <Main />
-    </div>
+    <>
+      <BackgroundImagePrez />
+      <ProjectPrez />
+    </>
   );
 }

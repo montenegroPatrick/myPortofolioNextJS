@@ -12,6 +12,12 @@ module.exports = withMT({
   ],
   theme: {
     extend: {
+      screens: {
+        sm: "480px",
+        md: "768px",
+        lg: "976px",
+        xl: "1440px",
+      },
       fontFamily: {
         mono: ["var(--font-roboto-mono)"],
         delicious: ["var(--delicious-handrawn)"],

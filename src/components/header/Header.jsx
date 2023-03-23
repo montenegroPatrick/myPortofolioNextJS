@@ -84,21 +84,21 @@ export default function Header({ dark, setDarkMode }) {
             target="_blank"
             alt="github"
           >
-            <BsGithub className="text-black rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500 lg:w-5 lg:h-5" />
+            <BsGithub className="text-gray-800/[0.7] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500 lg:w-5 lg:h-5" />
           </Link>
           <Link
             href="https://www.facebook.com/patrick.montenegro2b/"
             alt="facebook"
             target="_blank"
           >
-            <BsFacebook className="text-black rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 lg:w-5 duration-500 lg:h-5" />
+            <BsFacebook className="text-gray-800/[0.7] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 lg:w-5 duration-500 lg:h-5" />
           </Link>{" "}
           <Link
             href="https://www.linkedin.com/feed/"
             alt="linkedIn"
             target="_blank"
           >
-            <BsLinkedin className="text-black rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500 lg:w-5 lg:h-5" />
+            <BsLinkedin className="text-gray-800/[0.7] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500 lg:w-5 lg:h-5" />
           </Link>
         </div>
 
