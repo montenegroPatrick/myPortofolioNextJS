@@ -11,6 +11,24 @@ module.exports = withMT({
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    plugins: [],
+    extend: {
+      fontFamily: {
+        mono: ["var(--font-roboto-mono)"],
+        delicious: ["var(--delicious-handrawn)"],
+        cantarell: ["var(--font-cantarell)"],
+      },
+      switch: {
+        styles: {
+          base: {
+            root: {
+              display: "inline-flex",
+              alignItems: "items-center",
+              justifyContent: "space-between",
+            },
+          },
+        },
+      },
+    },
   },
+  plugins: [],
 });

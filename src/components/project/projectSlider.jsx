@@ -9,7 +9,7 @@ import miniJeux from "../../../public/miniJeux.png";
 import chatroom from "../../../public/chatroom.png";
 import patrickTrafiquey from "../../../public/patrick-trafiquey.png";
 import { motion, useAnimation, useInView } from "framer-motion";
-import format from "date-fns/format";
+import { VscChevronRight } from "react-icons/vsc";
 function ProjectPrez({ repos }) {
   const divEl = useRef();
   const inView = useInView(divEl);
@@ -35,29 +35,23 @@ function ProjectPrez({ repos }) {
       });
     }
   }, [inView]);
-  const formatDate = (date) => {
-    const formattedDate = format(new Date(date), "dd/MM/yyyy");
-    return formattedDate;
-  };
+
   return (
     <div
       ref={divEl}
-      className="flex flex-row flex-wrap gap-4 ml-14 justify-left p-2 "
+      className="flex flex-row flex-wrap gap-12 ml-14 justify-center p-2 "
     >
-      <h1 className=" border-b-white border-b-2 flex justify-center text-white w-full ml-8 mr-8 mb-4 p-4 place-content-center text-2xl">
-        PROJECT
-      </h1>
+      <h1 className="border-b-black dark:border-b-white flex justify-center w-full mr-8 mb-4 p-4 place-content-center text-normal md:text-xl lg:text-2xl italic text-gray-800 dark:text-gray-300/[0.6] "></h1>
       {repos.map((repo) => (
-        <motion.div animate={animation}>
-          <MyToolTip content={repo.name} name={repo.name}>
-            <div key={repo.id}>
-              <Link
-                href={repo.html_url}
-                target="_blank"
-                className="group relative"
-              >
+        <MyToolTip content={repo.name} name={repo.name}>
+          <motion.div
+            className="group shadowBox border-2 dark:bg-blue-gray-900/50 border-collapse border-black/10 rounded-3xl relative w-full md:w-1/3 h-96"
+            animate={animation}
+          >
+            <Link href={repo.html_url} target="_blank" className="">
+              <div className="rounded-xl opacity-30" key={repo.id}>
                 <div
-                  className="card w-96 rounded-lg h-36 group-hover:scale-110 group-hover:block group-hover:w-fit group-hover:h-fit duration-500 border-2 border-stone-700"
+                  className="rounded-xl group-hover:scale-200 duration-500 border-stone-700"
                   style={{
                     postion: "relative",
                     backgroundSize: "cover",
@@ -65,30 +59,36 @@ function ProjectPrez({ repos }) {
                     backgroundRepeat: "no-repeat",
                   }}
                 >
-                  <div className="group-hover:opacity-0 shadow-lg absolute top-0 left-0 flex flex-col -z-10 group-hover:duration-700">
-                    <ul className="flex flex-row flex-wrap">
+                  <div className="w-full h-full group-hover:opacity-0 absolute top-0 left-0 flex flex-col items-center justify-between gap-4 -z-10 group-hover:duration-700 ">
+                    <h1 className="text-2xl dark:text-white font-semibold font-delicious p-10">
+                      {repo.name}
+                    </h1>
+                    <ul className="flex flex-end flex-row flex-wrap p-10">
                       {repo.topics.map((topic) => (
-                        <li className="w-fit h-fit mt-3 text-white text-sm font-semibold ml-2 mr-2 bg-black/[0.7] px-3 py-2 rounded-xl">
+                        <li className="mt-3 text-black dark:text-white text-sm  mr-2 bg-lime-50/[0.1] px-2 py-1 shadowBox rounded-xl">
                           #{topic}
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div className="text-white opacity-0 w-96 h-32 my-auto mx-auto flex flex-col justify-between -translate-x-20 group-hover:opacity-100 bg-black/[0.8] group-hover:translate-x-0 duration-700 delay-100 p-2">
-                    <section>
-                      <h2 className="text-sm px-2">{repo.description}</h2>
-                    </section>
-                    <section>
-                      <h3 className="text-md px-2 text-right">
-                        dernière MAJ : {formatDate(repo.updated_at)}
-                      </h3>
-                    </section>
-                  </div>
                 </div>
-              </Link>
+              </div>
+            </Link>
+            <div className="w-full h-full dark:text-white text-white opacity-0 flex flex-col rounded-3xl justify-around -translate-x-20 group-hover:opacity-100 bg-black/[0.3] group-hover:translate-x-0 duration-700 delay-100">
+              <section>
+                <h2 className="text-xg font-semibold p-8 text-justify flex flex-col gap-4">
+                  <span className="font-bold text-7xl">{">"}</span>
+                  {repo.description}
+                </h2>
+              </section>
+              <section>
+                <h3 className="text-sm p-4 text-right font-semibold">
+                  dernière MAJ : {repo.updated_at}
+                </h3>
+              </section>
             </div>
-          </MyToolTip>
-        </motion.div>
+          </motion.div>
+        </MyToolTip>
       ))}
     </div>
   );
