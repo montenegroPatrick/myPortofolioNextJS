@@ -3,8 +3,13 @@ import cvDev from "../../public/cvDev.jpeg";
 
 function Cv() {
   return (
-    <div className="flex justify-center z-10 py-32">
-      <Image src={cvDev} width="100vw" alt="cvMontenegroPatrick" />
+    <div className="flex justify-center shadowBox py-32">
+      <Image
+        className="shadowBox"
+        src={cvDev}
+        width="100vw"
+        alt="cvMontenegroPatrick"
+      />
     </div>
   );
 }

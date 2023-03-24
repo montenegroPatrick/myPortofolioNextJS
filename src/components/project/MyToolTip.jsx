@@ -1,6 +1,5 @@
 "use client";
 import { Tooltip, Button } from "@material-tailwind/react";
-import { useState } from "react";
 
 export default function MyTooltip({ children, content }) {
   return (

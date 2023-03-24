@@ -1,6 +1,7 @@
 import "./globals.css";
 import { cantarell, deliciousHandrawn, robotoMono } from "./fonts";
 import ReactQueryWrapper from "./ReactQueryWrapper";
+import Loading from "./loading";
 
 export const metadata = {
   title: "Portofolio",

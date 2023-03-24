@@ -5,8 +5,7 @@ import axios from "axios";
 const api = axios.create({
   baseURL: "https://api.github.com",
   headers: {
-    Authorization:
-      "Bearer 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",
+    Authorization: "Bearer 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",
   },
 });
 const fetchRepos = async () =>

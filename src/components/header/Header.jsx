@@ -50,11 +50,11 @@ export default function Header({ dark, setDarkMode }) {
           as="li"
           variant="small"
           color="blue-gray"
-          className="dark:text-gray-200 italic text-gray-700 text-md font-semibold lg:text-lg mr-5 hover:-translate-y-1 hover:scale-110 duration-100"
+          className="dark:text-gray-200 italic text-white text-md bg-yellow-400/[0.1] font-bold lg:text-lg mr-2 rounded-lg hover:-translate-y-1 hover:scale-110 duration-200"
         >
           <Link
             href={link.url}
-            className="p-2 dark:bg-white/[0.1] bg-gray-200/[0.2] shadowBox rounded-xl"
+            className="p-2 dark:bg-white/[0.1]  shadowBox rounded-xl"
           >
             {link.name}
           </Link>
