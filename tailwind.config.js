@@ -22,6 +22,8 @@ module.exports = withMT({
         mono: ["var(--font-roboto-mono)"],
         delicious: ["var(--delicious-handrawn)"],
         cantarell: ["var(--font-cantarell)"],
+        kanit: ["var(--font-kanit)"],
+        titilliumWeb: ["var(--font-titillium-web)"],
       },
       switch: {
         styles: {

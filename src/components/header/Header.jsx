@@ -50,7 +50,7 @@ export default function Header({ dark, setDarkMode }) {
           as="li"
           variant="small"
           color="blue-gray"
-          className="dark:text-gray-200 italic text-white text-md bg-yellow-400/[0.1] font-bold lg:text-lg mr-2 rounded-lg hover:-translate-y-1 hover:scale-110 duration-200"
+          className="dark:text-gray-200 italic text-white text-md bg-green-900/30 font-bold lg:text-lg mr-2 rounded-lg hover:-translate-y-1 hover:scale-110 duration-200"
         >
           <Link
             href={link.url}
@@ -84,21 +84,21 @@ export default function Header({ dark, setDarkMode }) {
             target="_blank"
             alt="github"
           >
-            <BsGithub className="text-gray-800/[0.7] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500 lg:w-5 lg:h-5" />
+            <BsGithub className="text-green-900/[0.4] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500 lg:w-5 lg:h-5" />
           </Link>
           <Link
             href="https://www.facebook.com/patrick.montenegro2b/"
             alt="facebook"
             target="_blank"
           >
-            <BsFacebook className="text-gray-800/[0.7] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 lg:w-5 duration-500 lg:h-5" />
+            <BsFacebook className="text-green-900/[0.4] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 lg:w-5 duration-500 lg:h-5" />
           </Link>{" "}
           <Link
             href="https://www.linkedin.com/feed/"
             alt="linkedIn"
             target="_blank"
           >
-            <BsLinkedin className="text-gray-800/[0.7] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500 lg:w-5 lg:h-5" />
+            <BsLinkedin className="text-green-900/[0.4] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500 lg:w-5 lg:h-5" />
           </Link>
         </div>
 
@@ -107,6 +107,7 @@ export default function Header({ dark, setDarkMode }) {
         <IconButton
           variant="text"
           className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+          color="white"
           ripple={false}
           onClick={() => setOpenNav(!openNav)}
         >
@@ -114,9 +115,8 @@ export default function Header({ dark, setDarkMode }) {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
-              className="h-6 w-6"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+              className="h-10 w-6 mt-5 block"
+              stroke="white"
               strokeWidth={2}
             >
               <path
@@ -128,9 +128,9 @@ export default function Header({ dark, setDarkMode }) {
           ) : (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              className="h-6 w-6 block"
               fill="none"
-              stroke="currentColor"
+              stroke="white"
               strokeWidth={2}
             >
               <path
@@ -143,7 +143,9 @@ export default function Header({ dark, setDarkMode }) {
         </IconButton>
       </div>
       <MobileNav open={openNav}>
-        <div className="flex justify-end">{navList}</div>
+        <div className="flex justify-end bg-transparent rounded-full">
+          {navList}
+        </div>
       </MobileNav>
     </nav>
   );

@@ -9,7 +9,3 @@
 ;
 background-blend-mode: darken;
 }
-.nav {
-    background: rgb(38, 38, 52);
-background: linear-gradient(90deg, rgb(0, 0, 221) 0%, rgba(27,26,26,1) 0%, rgb(35, 43, 67) 33%, rgb(35, 37, 63) 64%, rgba(0,0,0,1) 100%);
-}

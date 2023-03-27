@@ -8,6 +8,7 @@ import Loading from "@/app/loading";
 import Error from "@/app/error";
 import { useRepos } from "../query-hooks/FetchRepos";
 import FromLeftToRightAnimation from "../animations/FromLeftToRightAnimation";
+import Image from "next/image";
 
 function ProjectPrez() {
   const divEl = useRef();
@@ -24,7 +25,7 @@ function ProjectPrez() {
             <FromLeftToRightAnimation
               key={repo.id}
               refArg={divEl}
-              classes="group shadowBox bg-blue-gray-800/[0.1] border-2 dark:bg-blue-gray-900/50 border-collapse border-black/10 rounded-3xl relative w-full md:w-1/3 h-96"
+              classes="group shadowBox  bg-gradient-to-b from-green-900/30 to-transparent border-2 dark:bg-blue-gray-900/50 border-collapse border-black/10 rounded-3xl relative w-full md:w-1/3 h-96"
             >
               <MyToolTip content={repo.name} name={repo.name}>
                 <Link href={repo.html_url} target="_blank" className="">
@@ -42,7 +43,7 @@ function ProjectPrez() {
                         <h1 className="text-2xl z-50 text-white lg:uppercase font-semibold font-cantarell p-10">
                           {repo.name}
                         </h1>
-                        <p className="lg:px-10 py-2 text-justify font-mono text-md md:text-sm lg:text-xl text-white bg-yellow-200/[0.1]  shadowBox w-full">
+                        <p className="lg:px-10 py-2 text-justify font-titilliumWeb italic text-md md:text-sm lg:text-xl text-white bg-green-900/[0.1]  shadowBox w-full">
                           {repo.description}
                         </p>
                         <ul className="flex flex-end flex-row flex-wrap p-4">

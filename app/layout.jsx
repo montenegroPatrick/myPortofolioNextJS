@@ -1,5 +1,11 @@
 import "./globals.css";
-import { cantarell, deliciousHandrawn, robotoMono } from "./fonts";
+import {
+  Alkatra,
+  cantarell,
+  deliciousHandrawn,
+  kanit,
+  robotoMono,
+} from "./fonts";
 import ReactQueryWrapper from "./ReactQueryWrapper";
 import Loading from "./loading";
 
@@ -12,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${robotoMono.variable} ${cantarell.variable} ${deliciousHandrawn.variable}`}
+      className={`${robotoMono.variable} ${cantarell.variable} ${deliciousHandrawn.variable} ${kanit.variable}`}
     >
       <body className="bg-gray-300 dark:bg-black font-mono">
         <ReactQueryWrapper>{children}</ReactQueryWrapper>

@@ -1,19 +1,8 @@
-import {
-  motion,
-  motionValue,
-  useAnimation,
-  useCycle,
-  useInView,
-  useTime,
-  useTransform,
-} from "framer-motion";
-import React, { useEffect } from "react";
+import { motion, useTime } from "framer-motion";
 
 function TextWritting({ text, classes, refArg }) {
   const textSplit = text.split("");
-  console.log(textSplit);
   const time = useTime();
-  const rotate = useTransform(time, [0, 1000], [0, 360], { clamp: false });
   return (
     <motion.h1 className={classes}>
       {textSplit.map((letter, index) => (

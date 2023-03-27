@@ -11,7 +11,7 @@ export default function ReactQueryWrapper({ children }) {
   return (
     <QueryClientProvider client={queryClient}>
       <main className={`${darkMode ? "dark" : ""} `}>
-        <div className="flex flex-col gap-5 rounded-xl bg-gradient-to-tl from-yellow-800/ to-gray-200 dark:bg-gradient-to-tl dark:from-black dark:to-blue-gray-900">
+        <div className="flex flex-col gap-5 rounded-xl bg-gradient-to-tl from-green-100/[0.1] to-gray-400 dark:bg-gradient-to-tl dark:from-black dark:to-blue-gray-900">
           <Header dark={darkMode} setDarkMode={setDarkMode} />
           {children}
           <Footer />

@@ -5,7 +5,6 @@ import { useEffect } from "react";
 
 function FromRightToLeftAnimation({ children, refArg, classes }) {
   const inView = useInView(refArg);
-  console.log(inView);
   const animation = useAnimation();
 
   useEffect(() => {
