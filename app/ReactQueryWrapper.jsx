@@ -10,13 +10,13 @@ export default function ReactQueryWrapper({ children }) {
   const [darkMode, setDarkMode] = useState(false);
   return (
     <QueryClientProvider client={queryClient}>
-      <main className={`${darkMode ? "dark" : ""} `}>
-        <div className="flex flex-col gap-5 rounded-xl bg-gradient-to-tl from-green-100/[0.1] to-gray-400 dark:bg-gradient-to-tl dark:from-black dark:to-blue-gray-900">
+      <container className={`${darkMode ? "dark" : ""} `}>
+        <div className="flex flex-col gap-10 rounded-xl bg-white dark:bg-gradient-to-tl dark:from-black dark:to-blue-gray-900">
           <Header dark={darkMode} setDarkMode={setDarkMode} />
           {children}
           <Footer />
         </div>
-      </main>
+      </container>
     </QueryClientProvider>
   );
 }

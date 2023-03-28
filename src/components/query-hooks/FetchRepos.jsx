@@ -1,4 +1,3 @@
-"use client";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 /**
@@ -9,7 +8,7 @@ import axios from "axios";
 const api = axios.create({
   baseURL: "https://api.github.com",
   headers: {
-    Authorization: "Bearer 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",
+    Authorization: "Bearer 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",
   },
 });
 const fetchRepos = async () =>

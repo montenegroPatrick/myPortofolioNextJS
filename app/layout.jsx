@@ -8,6 +8,7 @@ import {
 } from "./fonts";
 import ReactQueryWrapper from "./ReactQueryWrapper";
 import Loading from "./loading";
+import { useQuery } from "@tanstack/react-query";
 
 export const metadata = {
   title: "Portofolio",
@@ -20,7 +21,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${robotoMono.variable} ${cantarell.variable} ${deliciousHandrawn.variable} ${kanit.variable}`}
     >
-      <body className="bg-gray-300 dark:bg-black font-mono">
+      <body className="dark:bg-black font-kanit">
         <ReactQueryWrapper>{children}</ReactQueryWrapper>
       </body>
     </html>

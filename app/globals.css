@@ -24,3 +24,12 @@ scroll-behavior: smooth;
   0px 26px 11px -12px rgba(57, 57, 57, 0.291)
 ;
 }
+.projectShadow {
+  box-shadow:
+  -39px 46.6px 0px rgba(0, 0, 0, 0.08),
+  68.5px 81.7px 0px rgba(0, 0, 0, 0.06),
+  -93px 111.2px 0px rgba(0, 0, 0, 0.053),
+  115px 137px 0px rgba(0, 0, 0, 0.044)
+;
+rotate: 0, 1, 0, 60deg;
+}

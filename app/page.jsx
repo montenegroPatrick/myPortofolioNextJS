@@ -1,14 +1,12 @@
-"use client";
-import { useQuery } from "@tanstack/react-query";
 import BackgroundImagePrez from "@/src/components/presentation/image";
 import ProjectPrez from "@/src/components/project/projectSlider";
-import axios from "axios";
+import BookAnimation from "@/src/components/animations/bookAnimation";
 
 export default function Home() {
   return (
-    <>
+    <BookAnimation>
       <BackgroundImagePrez />
       <ProjectPrez />
-    </>
+    </BookAnimation>
   );
 }

@@ -15,6 +15,7 @@ import { BsFacebook, BsGithub, BsLinkedin } from "react-icons/bs";
 import logo from "../../../public/logo.png";
 import "./style.css";
 import Image from "next/image";
+import BookAnimation from "../animations/bookAnimation";
 
 export default function Header({ dark, setDarkMode }) {
   const [openNav, setOpenNav] = useState(false);
@@ -43,7 +44,7 @@ export default function Header({ dark, setDarkMode }) {
     },
   ];
   const navList = (
-    <ul className="mb-4 mt-2 p-4 flex gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-right lg:gap-4 ">
+    <ul className="flex gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-right lg:gap-4 ">
       {links.map((link) => (
         <Typography
           key={link.id}
@@ -54,7 +55,7 @@ export default function Header({ dark, setDarkMode }) {
         >
           <Link
             href={link.url}
-            className="p-2 dark:bg-white/[0.1]  shadowBox rounded-xl"
+            className="p-2 pt-2 dark:bg-white/[0.1]  shadowBox rounded-xl"
           >
             {link.name}
           </Link>
@@ -64,14 +65,14 @@ export default function Header({ dark, setDarkMode }) {
   );
 
   return (
-    <nav className="p-5 mx-2 mt-2 w-screen fixed mb-2 rounded-lg lg:w-screen py-2 px-4 lg:px-6 lg:py-2 z-10 duration-700">
-      <div className="flex justify-between">
-        <div className="w-96 ml-10 justify-between flex flex-row cursor-pointer p-5">
-          <div className="flex flex-rox gap-4">
+    <nav className="w-screen px-5 py-2 fixed rounded-lg lg:w-screen z-10 duration-700">
+      <div className="flex justify-between ">
+        <div className=" flex flex-row gap-10 cursor-pointer">
+          <div className="flex flex-row gap-4">
             {dark ? (
-              <WiMoonAltWaningCrescent5 className="h-7 w-7 text-white" />
+              <WiMoonAltWaningCrescent5 className="h-7 w-7 bg-green-500/10" />
             ) : (
-              <WiMoonNew className="h-7 w-7 text-white" />
+              <WiMoonNew className="h-7 w-7 bg-green-500/10" />
             )}
             <Switch
               onClick={() => setDarkMode(!dark)}
@@ -79,35 +80,35 @@ export default function Header({ dark, setDarkMode }) {
               className="text-black rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500"
             />
           </div>
-          <Link
-            href="https://github.com/montenegroPatrick"
-            target="_blank"
-            alt="github"
-          >
-            <BsGithub className="text-green-900/[0.4] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500 lg:w-5 lg:h-5" />
-          </Link>
-          <Link
-            href="https://www.facebook.com/patrick.montenegro2b/"
-            alt="facebook"
-            target="_blank"
-          >
-            <BsFacebook className="text-green-900/[0.4] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 lg:w-5 duration-500 lg:h-5" />
-          </Link>{" "}
-          <Link
-            href="https://www.linkedin.com/feed/"
-            alt="linkedIn"
-            target="_blank"
-          >
-            <BsLinkedin className="text-green-900/[0.4] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500 lg:w-5 lg:h-5" />
-          </Link>
+          <section className="flex flex-row gap-4 pt-2">
+            <Link
+              href="https://github.com/montenegroPatrick"
+              target="_blank"
+              alt="github"
+            >
+              <BsGithub className="text-green-900/[0.4] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500 lg:w-5 lg:h-5" />
+            </Link>
+            <Link
+              href="https://www.facebook.com/patrick.montenegro2b/"
+              alt="facebook"
+              target="_blank"
+            >
+              <BsFacebook className="text-green-900/[0.4] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 lg:w-5 duration-500 lg:h-5" />
+            </Link>{" "}
+            <Link
+              href="https://www.linkedin.com/feed/"
+              alt="linkedIn"
+              target="_blank"
+            >
+              <BsLinkedin className="text-green-900/[0.4] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500 lg:w-5 lg:h-5" />
+            </Link>
+          </section>
         </div>
-
-        <div className="hidden lg:block">{navList}</div>
 
         <IconButton
           variant="text"
-          className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-          color="white"
+          className="h-6 w-6 bg-green-500/50 lg:hidden"
+          color="green"
           ripple={false}
           onClick={() => setOpenNav(!openNav)}
         >
@@ -115,7 +116,7 @@ export default function Header({ dark, setDarkMode }) {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
-              className="h-10 w-6 mt-5 block"
+              className="h-10 w-6"
               stroke="white"
               strokeWidth={2}
             >
@@ -128,7 +129,7 @@ export default function Header({ dark, setDarkMode }) {
           ) : (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 block"
+              className="h-6 w-6 "
               fill="none"
               stroke="white"
               strokeWidth={2}
@@ -141,6 +142,7 @@ export default function Header({ dark, setDarkMode }) {
             </svg>
           )}
         </IconButton>
+        <div className="hidden lg:block">{navList}</div>
       </div>
       <MobileNav open={openNav}>
         <div className="flex justify-end bg-transparent rounded-full">
