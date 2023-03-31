@@ -12,7 +12,6 @@ function ProjectPrez() {
   const divEl = useRef();
   const repos = useRepos();
   const [indexProjectInView, setIndexProjectInView] = useState(0);
-  const [scope, animate] = useAnimate();
   console.log(repos);
 
   return (
@@ -105,11 +104,6 @@ function ProjectPrez() {
                       Math.max(...Object.keys(repos.data))
                     ) {
                       setIndexProjectInView(0);
-                      animate(scope.current, {
-                        opacity: 0,
-                        rotateZ: "90deg",
-                        duration: 1,
-                      });
                     } else {
                       setIndexProjectInView(indexProjectInView + 1);
                     }

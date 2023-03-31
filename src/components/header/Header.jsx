@@ -33,14 +33,19 @@ export default function Header({ dark, setDarkMode }) {
       id: "1",
     },
     {
+      url: "/projet",
+      name: "projects",
+      id: "2",
+    },
+    {
       url: "/contact",
       name: "contact",
-      id: "2",
+      id: "3",
     },
     {
       url: "/cv",
       name: "cv",
-      id: "3",
+      id: "4",
     },
   ];
   const navList = (
