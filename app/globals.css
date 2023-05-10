@@ -34,7 +34,7 @@ scroll-behavior: smooth;
 rotate: 0, 1, 0, 60deg;
 }
 .textBackground {
-  background: linear-gradient(to bottom, #91bca6, #0f1c00aa);
+  background: linear-gradient(to bottom, #91bca6, #2a4e01aa);
       background-clip: text;
       color: transparent;
 }

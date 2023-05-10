@@ -149,10 +149,8 @@ export default function Header({ dark, setDarkMode }) {
         </IconButton>
         <div className="hidden lg:block">{navList}</div>
       </div>
-      <MobileNav open={openNav}>
-        <div className="flex justify-end bg-transparent rounded-full">
-          {navList}
-        </div>
+      <MobileNav open={openNav} className="rounded-full">
+        <div className="flex justify-end  py-5 rounded-full">{navList}</div>
       </MobileNav>
     </nav>
   );
