@@ -28,7 +28,7 @@ function ProjectPrez() {
             .map((repo, index) => (
               <>
                 <div
-                  className="font-bold text-6xl text-gray-200/[0.5] cursor-pointer hover:scale-110"
+                  className="font-bold text-6xl text-gray-500 cursor-pointer hover:scale-110"
                   onClick={() => {
                     const indexRepos = Object.keys(repos.data);
 
@@ -95,7 +95,7 @@ function ProjectPrez() {
                 </FromLeftToRightAnimation>
 
                 <div
-                  className="font-bold text-6xl text-gray-200/[0.5] cursor-pointer duration-700 hover:scale-110"
+                  className="font-bold text-6xl text-gray-500 cursor-pointer duration-700 hover:scale-110"
                   onClick={() => {
                     if (
                       indexProjectInView ===
