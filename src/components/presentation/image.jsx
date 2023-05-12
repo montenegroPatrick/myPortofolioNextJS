@@ -16,7 +16,7 @@ function BackgroundImagePrez() {
       /> */}
       <section
         ref={divName}
-        className="flex mt-5 xl:w-1/2 w-fit rounded-3xl bg-gray-200/[0.5] dark:bg-transparent border-2 border-gray-200 flex-grow px-10 py-10 lg:w-3/6 flex-col xl:flex-row xl:justify-between lg:flex-nowrap gap-2"
+        className="flex mt-5 xl:w-1/2 w-fit rounded-3xl dark:bg-transparent border-2 border-gray-200 flex-grow px-10 py-10 lg:w-3/6 flex-col xl:flex-row xl:justify-between lg:flex-nowrap gap-2"
       >
         <FromLeftToRightAnimation refArg={divName}>
           <div className="flex flex-col justify-around dark:z-0 text-3xl xl:text-9xl h-full bg-transparent font-extrabold p-5 dark:text-white rounded-3xl font-titilliumWeb translate-z-10 ">
