@@ -49,14 +49,15 @@ export default function Header({ dark, setDarkMode }) {
     },
   ];
   const navList = (
-    <ul className="flex gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-right lg:gap-4 ">
+    <ul className="flex flex-col gap-10  opacity-100 justify-center w-fit lg:mb-0 lg:mt-0 lg:flex-row lg:items-right lg:gap-4 ">
       {links.map((link) => (
         <Typography
           key={link.id}
           as="li"
+          onClick={() => setOpenNav(!openNav)}
           variant="small"
           color="blue-gray"
-          className="dark:text-gray-200 italic text-white text-md bg-green-900/30 font-bold lg:text-lg mr-2 rounded-lg hover:-translate-y-1 hover:scale-110 duration-200"
+          className="dark:text-gray-200 w-fit italic text-white text-md bg-green-900/30 font-bold lg:text-lg mr-2 rounded-lg hover:-translate-y-1 hover:scale-110 duration-200"
         >
           <Link
             href={link.url}
@@ -150,7 +151,9 @@ export default function Header({ dark, setDarkMode }) {
         <div className="hidden lg:block">{navList}</div>
       </div>
       <MobileNav open={openNav} className="rounded-full lg:hidden">
-        <div className="flex justify-end  py-5 rounded-full">{navList}</div>
+        <div className="flex justify-center dark:bg-inherit z-10 bg-opacity-0 py-5 h-fit rounded-lg w-full flex-col items-end ">
+          {navList}
+        </div>
       </MobileNav>
     </nav>
   );

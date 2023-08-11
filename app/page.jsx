@@ -1,11 +1,11 @@
-import BackgroundImagePrez from "@/src/components/presentation/image";
 import ProjectPrez from "@/src/components/project/projectSlider";
 import BookAnimation from "@/src/components/animations/bookAnimation";
+import Presentation from "@/src/components/presentation/presentation";
 
 export default function Home() {
   return (
     <BookAnimation>
-      <BackgroundImagePrez />
+      <Presentation />
       <ProjectPrez />
     </BookAnimation>
   );
