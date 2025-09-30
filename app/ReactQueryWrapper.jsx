@@ -7,18 +7,19 @@ import { useState, useEffect } from "react";
 const queryClient = new QueryClient();
 
 export default function ReactQueryWrapper({ children }) {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     // Récupère la préférence du localStorage, par défaut true (dark mode)
     const storedDarkMode = localStorage.getItem('darkMode');
     const isDark = storedDarkMode !== null ? storedDarkMode === 'true' : true;
     
-    setDarkMode(isDark);
+
     
     // Si c'est la première visite, sauvegarde la préférence par défaut
     if (storedDarkMode === null) {
       localStorage.setItem('darkMode', 'true');
+      setDarkMode(true);
     }
     
     if (isDark) {
@@ -30,7 +31,7 @@ export default function ReactQueryWrapper({ children }) {
 
   const handleSetDarkMode = (isDark) => {
     setDarkMode(isDark);
-    localStorage.setItem('darkMode', isDark.toString());
+    localStorage.setItem('darkMode', isDark ? "true" : "false");
     if (isDark) {
       document.documentElement.classList.add('dark');
     } else {
@@ -41,7 +42,7 @@ export default function ReactQueryWrapper({ children }) {
   return (
     <QueryClientProvider client={queryClient}>
       <body className={`${darkMode ? "dark" : ""}`}>
-        <section className="flex flex-col gap-10 bg-white dark:bg-gradient-to-tl dark:from-black dark:to-blue-gray-900">
+        <section className="flex flex-col gap-10 bg-white dark:bg-black">
           <Header dark={darkMode} setDarkMode={handleSetDarkMode} />
           {children}
           <Footer />

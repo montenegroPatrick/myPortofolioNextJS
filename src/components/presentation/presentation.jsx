@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Presentation() {
 const photo = "/patrick.jpg";
   return (
-    <section className=" pt-16 h-full bg-white dark:bg-gray-900">
+    <section className=" pt-16 h-full bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="py-20 lg:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full  ">
