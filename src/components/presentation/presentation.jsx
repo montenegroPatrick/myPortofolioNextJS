@@ -47,7 +47,7 @@ const photo = "/patrick.jpg";
 
               {/* Skills pills */}
               <div className="flex flex-wrap gap-2">
-                {[ "NEXT.JS", "ANGULAR", "FLUTTER", "TYPESCRIPT", "TAILWIND", "NODE.JS", "SQL", "PRISMA", "FIREBASE",].map((skill) => (
+                {[ "WEB_APP", "MOBILE_APP","NEXT.JS", "ANGULAR", "FLUTTER", "TYPESCRIPT", "TAILWIND", "NODE.JS", "SQL", "PRISMA", "FIREBASE",].map((skill) => (
                   <span
                     key={skill}
                     className="px-3 py-1 text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 rounded-full"
