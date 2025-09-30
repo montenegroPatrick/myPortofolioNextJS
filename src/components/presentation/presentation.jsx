@@ -26,7 +26,7 @@ const photo = "/patrick.jpg";
 
               <div className="space-y-6">
                 <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                J’aime transformer les idées en expériences digitales. En tant que développeur full-stack, je crée des outils élégants, intuitifs et puissants, où chaque détail compte pour offrir la meilleure expérience.
+                Transformer les idées en expériences digitales. En tant que développeur full-stack, je crée des outils élégants, intuitifs et puissants, où chaque détail compte pour offrir la meilleure expérience utilisateur.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
