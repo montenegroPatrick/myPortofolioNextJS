@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${robotoMono.variable} ${cantarell.variable} ${deliciousHandrawn.variable} ${kanit.variable}`}
+      className={`dark ${robotoMono.variable} ${cantarell.variable} ${deliciousHandrawn.variable} ${kanit.variable}`}
     >
       <ReactQueryWrapper>{children}</ReactQueryWrapper>
     </html>

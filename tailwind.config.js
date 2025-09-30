@@ -2,6 +2,7 @@ const withMT = require("@material-tailwind/react/utils/withMT");
 
 module.exports = withMT({
   darkMode: "class",
+
   content: [
     "./app/**/*.{js,ts,jsx,tsx}", // Note the addition of the `app` directory.
     "./pages/**/*.{js,ts,jsx,tsx}",

@@ -1,49 +1,83 @@
 "use client";
-import React, { useRef } from "react";
-import FromLeftToRightAnimation from "../animations/FromLeftToRightAnimation";
-import FromRightToLeftAnimation from "../animations/FromRightToLeftAnimation";
-import TextWritting from "../animations/TextWritting";
-function Presentation() {
-  const divName = useRef();
+import React from "react";
+import Image from "next/image";
+
+
+export default function Presentation() {
+const photo = "/patrick.jpg";
   return (
-    <main>
-      <section
-        ref={divName}
-        className="flex mt-20 h-screen w-screenrounded-3xl dark:bg-transparent px-10 justify-center items-center "
-      >
-        <FromLeftToRightAnimation refArg={divName}>
-          <div className="flex w-full justify-center dark:z-0 text-5xl md:text-9xl h-full bg-transparent font-extrabold p-5 rounded-3xl font-titilliumWeb translate-z-10 ">
-            <div>
-              <TextWritting
-                refArf={divName}
-                text="Développeur Web"
-                classes="pt-4 border-gray-700 dark:border-blue-gray-700  font-bold text-green-500/30  dark:text-gray-500 "
-              />
-              <TextWritting
-                refArf={divName}
-                text="Front-end"
-                classes="pt-4 border-gray-700 italic text-right dark:border-blue-gray-700 text-black/50 text-gray/10  dark:text-gray-500 "
-              />
+    <section className=" pt-16 h-full bg-white dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div className="py-20 lg:py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full  ">
+            {/* Text Content */}
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white">
+                  Salut, je suis{" "}
+                  <span className="text-blue-500">
+                    Patrick
+                  </span>
+                </h1>
+                <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 font-light">
+                  Développeur Web Full Stack
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                J’aime transformer les idées en expériences digitales. En tant que développeur full-stack, je crée des outils élégants, intuitifs et puissants, où chaque détail compte pour offrir la meilleure expérience.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="#projects"
+                    className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200"
+                  >
+                    Voir mes projets
+                  </a>
+                  <a
+                    href="/contact"
+                    className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+                  >
+                    Me contacter
+                  </a>
+                </div>
+              </div>
+
+              {/* Skills pills */}
+              <div className="flex flex-wrap gap-2">
+                {[ "NEXT.JS", "ANGULAR", "FLUTTER", "TYPESCRIPT", "TAILWIND", "NODE.JS", "SQL", "PRISMA", "FIREBASE",].map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1 text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 rounded-full"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Photo */}
+            <div className="flex justify-center items-end lg:justify-end flex-grow">
+              <div className="relative ">
+                <div className="rounded-full">
+                  <div className="rounded-full bg-white dark:bg-gray-900 flex items-center justify-center overflow-hidden">
+                    {/* Placeholder for photo - replace with actual image */}
+                   
+                   <Image src={photo} alt="photo" width={400} height={100} />
+                   
+                  </div>
+                </div>
+                {/* Decorative elements */}
+              
+              </div>
             </div>
           </div>
-        </FromLeftToRightAnimation>
-      </section>
-      <section className="h-full w-full flex items-center justify-center">
-        <FromRightToLeftAnimation
-          refArg={divName}
-          classes="bg-transparent text-white  text-sm dark:z-0 h-fit w-fit rounded-xl lg:text-xl xl:text-5xl text-right flex flex-col dark:text-gray-300/[0.8] font-kanit"
-        >
-          <p className="text-center textBackground px-20">
-            Welcome, ici vous trouverez mes projets publics sur Github, ainsi
-            que mon cv.
-            <br />
-            N'hésitez pas à me contacter via le formulaire.
-            <br />{" "}
-          </p>
-        </FromRightToLeftAnimation>
-      </section>
-    </main>
+        </div>
+      </div>
+    </section>
   );
 }
 
-export default Presentation;
+

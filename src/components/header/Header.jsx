@@ -1,21 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import {
-  Navbar,
-  MobileNav,
-  Typography,
-  Button,
-  IconButton,
-  Avatar,
-  Switch,
-} from "@material-tailwind/react";
+import { IconButton } from "@material-tailwind/react";
 import Link from "next/link";
-import { WiMoonNew, WiMoonAltWaningCrescent5 } from "react-icons/wi";
-import { BsFacebook, BsGithub, BsLinkedin } from "react-icons/bs";
-import logo from "../../../public/logo.png";
-import "./style.css";
-import Image from "next/image";
-import BookAnimation from "../animations/bookAnimation";
+import { HiOutlineEnvelope } from "react-icons/hi2";
+import { HiMenu, HiX } from "react-icons/hi";
 
 export default function Header({ dark, setDarkMode }) {
   const [openNav, setOpenNav] = useState(false);
@@ -23,138 +11,98 @@ export default function Header({ dark, setDarkMode }) {
   useEffect(() => {
     window.addEventListener(
       "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false)
+      () => window.innerWidth >= 768 && setOpenNav(false)
     );
   }, []);
+
   const links = [
-    {
-      url: "/",
-      name: "portofolio",
-      id: "1",
-    },
-    {
-      url: "/projet",
-      name: "projects",
-      id: "2",
-    },
-    {
-      url: "/contact",
-      name: "contact",
-      id: "3",
-    },
-    {
-      url: "/cv",
-      name: "cv",
-      id: "4",
-    },
+    { url: "/", name: "Accueil", id: "1" },
+    { url: "/projet", name: "Projets", id: "2" },
+    { url: "/cv", name: "CV", id: "3" },
   ];
-  const navList = (
-    <ul className="flex flex-col gap-10  opacity-100 justify-center w-fit lg:mb-0 lg:mt-0 lg:flex-row lg:items-right lg:gap-4 ">
-      {links.map((link) => (
-        <Typography
-          key={link.id}
-          as="li"
-          onClick={() => setOpenNav(!openNav)}
-          variant="small"
-          color="blue-gray"
-          className="dark:text-gray-200 w-fit italic text-white text-md bg-green-900/30 font-bold lg:text-lg mr-2 rounded-lg hover:-translate-y-1 hover:scale-110 duration-200"
-        >
-          <Link
-            href={link.url}
-            className="p-2 pt-2 dark:bg-white/[0.1]  shadowBox rounded-xl"
-          >
-            {link.name}
-          </Link>
-        </Typography>
-      ))}
-    </ul>
-  );
 
   return (
-    <nav className="w-screen px-5 py-2 fixed rounded-lg lg:w-screen z-10 duration-700">
-      <div className="flex justify-between ">
-        <div className=" flex flex-row gap-10 cursor-pointer">
-          <div className="flex flex-row gap-4">
-            {dark ? (
-              <WiMoonAltWaningCrescent5 className="h-7 w-7 bg-green-500/10" />
-            ) : (
-              <WiMoonNew className="h-7 w-7 bg-green-500/10" />
-            )}
-            <Switch
-              onClick={() => setDarkMode(!dark)}
-              color={dark ? "gray" : "blue-gray"}
-              className="text-black rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500"
-            />
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo/Nom à gauche */}
+          <div className="flex-shrink-0">
+            <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+              Patrick Montenegro
+            </Link>
           </div>
-          <section className="flex flex-row gap-4 pt-2">
+
+          {/* Navigation au centre - Desktop */}
+          <div className="hidden md:flex space-x-8">
+            {links.map((link) => (
+              <Link
+                key={link.id}
+                href={link.url}
+                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Contact et Toggle à droite */}
+          <div className="flex items-center space-x-4">
+            {/* Contact Icon */}
             <Link
-              href="https://github.com/montenegroPatrick"
-              target="_blank"
-              alt="github"
+              href="/contact"
+              className="p-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              title="Contact"
             >
-              <BsGithub className="text-green-900/[0.4] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500 lg:w-5 lg:h-5" />
+              <HiOutlineEnvelope className="h-5 w-5" />
             </Link>
-            <Link
-              href="https://www.facebook.com/patrick.montenegro2b/"
-              alt="facebook"
-              target="_blank"
+
+            {/* Dark Mode Toggle */}
+            <button
+              onClick={() => setDarkMode(!dark)}
+              className="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+              title="Toggle theme"
             >
-              <BsFacebook className="text-green-900/[0.4] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 lg:w-5 duration-500 lg:h-5" />
-            </Link>{" "}
-            <Link
-              href="https://www.linkedin.com/feed/"
-              alt="linkedIn"
-              target="_blank"
-            >
-              <BsLinkedin className="text-green-900/[0.4] rounded-lg shadowBox dark:text-white/[0.3] hover:scale-150 duration-500 lg:w-5 lg:h-5" />
-            </Link>
-          </section>
+              {dark ? (
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              ) : (
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              )}
+            </button>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setOpenNav(!openNav)}
+                className="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+              >
+                {openNav ? <HiX className="h-6 w-6" /> : <HiMenu className="h-6 w-6" />}
+              </button>
+            </div>
+          </div>
         </div>
 
-        <IconButton
-          variant="text"
-          className="h-6 w-6 bg-green-500/50 lg:hidden"
-          color="green"
-          ripple={false}
-          onClick={() => setOpenNav(!openNav)}
-        >
-          {openNav ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              className="h-10 w-6"
-              stroke="white"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 "
-              fill="none"
-              stroke="white"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          )}
-        </IconButton>
-        <div className="hidden lg:block">{navList}</div>
-      </div>
-      <MobileNav open={openNav} className="rounded-full lg:hidden">
-        <div className="flex justify-center dark:bg-inherit z-10 bg-opacity-0 py-5 h-fit rounded-lg w-full flex-col items-end ">
-          {navList}
-        </div>
-      </MobileNav>
-    </nav>
+        {/* Mobile Navigation */}
+        {openNav && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+              {links.map((link) => (
+                <Link
+                  key={link.id}
+                  href={link.url}
+                  className="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-base font-medium transition-colors"
+                  onClick={() => setOpenNav(false)}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+    </header>
   );
 }

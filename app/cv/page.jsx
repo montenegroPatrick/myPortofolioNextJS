@@ -1,6 +1,6 @@
 import BookAnimation from "@/src/components/animations/bookAnimation";
 import Image from "next/image";
-import cvDev from "../../public/cvDev.jpeg";
+import cvDev from "../../public/cvDev.jpg";
 
 function Cv() {
   return (

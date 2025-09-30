@@ -26,13 +26,13 @@ function Contact() {
   };
 
   return (
-    <BookAnimation classes="w-full">
+    <BookAnimation classes="w-full max-w-6xl">
       <form
-        className="flex flex-col gap-10 text-white w-full p-8"
+        className="flex flex-col gap-10 justify-center text-white  p-8"
         onSubmit={handleSubmit}
       >
         <Input
-          className="text-white"
+          className="text-white "
           variant="standard"
           label="email adress"
           ref={emailRef}
@@ -65,7 +65,7 @@ function Contact() {
           aria-label="text"
         />
         <a
-          className="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gradient-to-tl from-green-900/30 to-transparent text-white shadow-md shadow-green-500/20 hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+          className="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gradient-to-tl bg-blue-500 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
           href={`mailto:patrick.montenegro.pro@gmail.com?cc=${emailAdressValue}&subject=${sujetValue}&body=${textValue}`}
         >
           {" "}

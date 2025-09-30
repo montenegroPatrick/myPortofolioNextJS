@@ -11,7 +11,16 @@ const api = axios.create({
 const fetchRepos = async () =>
   await api
     .get("/users/montenegroPatrick/repos?visibility=public")
-    .then((res) => res.data);
+    .then((res) =>
+    {
+      console.log(res.data);
+      return res.data;
+    })
+    .then((data) =>
+      data.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      )
+    );
 /**
  * Fetches public repositories for user montenegroPatrick on GitHub using Axios.
  *

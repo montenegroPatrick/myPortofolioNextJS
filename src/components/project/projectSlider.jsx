@@ -1,120 +1,154 @@
 "use client";
-import MyToolTip from "./MyToolTip";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { useRepos } from "../query-hooks/FetchRepos";
-import FromLeftToRightAnimation from "../animations/FromLeftToRightAnimation";
-import TextWritting from "../animations/TextWritting";
-import BookAnimation from "../animations/bookAnimation";
-import { motion, useAnimate } from "framer-motion";
+import { FiGithub, FiExternalLink, FiCalendar } from "react-icons/fi";
 
 function ProjectPrez() {
-  const divEl = useRef();
   const repos = useRepos();
-  const [indexProjectInView, setIndexProjectInView] = useState(0);
+
+  if (repos.isLoading) {
+    return (
+      <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Mes Projets
+            </h2>
+            <div className="flex justify-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (repos.isError) {
+    return (
+      <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Mes Projets
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              Erreur lors du chargement des projets
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <>
-      {repos.isSuccess && (
-        <div
-          ref={divEl}
-          className="flex flex-row gap-16 md:gap-36 m-3 rounded-3xl lg:gap-48 h-screen justify-center items-center p-2 "
-        >
-          {/* <h1 className="border-b-black dark:border-b-white flex justify-center w-full mr-8 mb-4 p-4 place-content-center text-normal md:text-xl lg:text-2xl italic text-gray-800 dark:text-gray-300/[0.6] "></h1> */}
-          {repos.data
-            .filter((repo, index) => {
-              return index === indexProjectInView;
-            })
-            .map((repo, index) => (
-              <>
-                <div
-                  className="font-bold text-6xl text-gray-500 cursor-pointer hover:scale-110"
-                  onClick={() => {
-                    const indexRepos = Object.keys(repos.data);
-
-                    if (indexProjectInView > 0) {
-                      setIndexProjectInView(indexProjectInView - 1);
-                    } else {
-                      setIndexProjectInView(Math.max(...indexRepos));
-                    }
-                  }}
-                >
-                  {" "}
-                  {"<"}{" "}
-                </div>
-
-                <FromLeftToRightAnimation
-                  refArg={divEl}
-                  classes="group md:projectShadow bg-gray-400/50  dark:bg-blue-gray-900/50 border-collapse rounded-3xl md:w-3/6 md:h-3/6"
-                >
-                  <MyToolTip content={repo.name} name={repo.name}>
-                    <Link href={repo.html_url} target="_blank" className="">
-                      <div className="rounded-xl">
-                        <div className="rounded-xl group-hover:scale-200 duration-500 border-stone-700 ">
-                          <div className="w-full h-full py-4 px-18 group-hover:opacity-0 absolute top-0 left-0 flex flex-col items-center justify-between gap-4 group-hover:duration-700 cursor-pointer">
-                            <h1 className="text-sm md:text-xl text-center lg:text-2xl w-full text-white lg:uppercase font-semibold font-cantarell p-1 lg:px-10 py-2">
-                              {repo.name}
-                            </h1>
-                            <p className="lg:px-10 py-2 text-justify font-titilliumWeb italic text-[0.7rem] md:text-sm lg:text-lg text-white bg-green-900/[0.1] shadowBox w-full">
-                              {repo.description}
-                            </p>
-                            <ul className="flex flex-end flex-row flex-wrap p-4">
-                              {repo.topics.map((topic) => (
-                                <div key={topic.id}>
-                                  <li
-                                    key={topic.id}
-                                    className="hidden md:block mt-1 md:mt-3 text-white dark:text-white text-[0.8rem] mr-2 bg-lime-50/[0.1] px-1 py-1 shadowBox rounded-xl"
-                                  >
-                                    #{topic}
-                                  </li>
-                                </div>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="w-full h-full bg-blue-gray-800/20 dark:text-white text-white opacity-0 flex flex-col rounded-3xl justify-around -translate-x-20 group-hover:opacity-100 group-hover:translate-x-0 duration-700 delay-100">
-                        <section>
-                          <h2 className="text-xl font-semibold p-8 text-justify flex flex-col gap-4">
-                            <span className="font-bold text-7xl">{">"}</span>
-                            GO TO
-                          </h2>
-                        </section>
-                        <section>
-                          <h3 className="text-sm p-4 text-right font-semibold">
-                            last update :{" "}
-                            {repo.updated_at
-                              .replace("T", " ")
-                              .replace("Z", " ")}
-                          </h3>
-                        </section>
-                      </div>
-                    </Link>
-                  </MyToolTip>
-                </FromLeftToRightAnimation>
-
-                <div
-                  className="font-bold text-6xl text-gray-500 cursor-pointer duration-700 hover:scale-110"
-                  onClick={() => {
-                    if (
-                      indexProjectInView ===
-                      Math.max(...Object.keys(repos.data))
-                    ) {
-                      setIndexProjectInView(0);
-                    } else {
-                      setIndexProjectInView(indexProjectInView + 1);
-                    }
-                  }}
-                >
-                  {" "}
-                  {">"}{" "}
-                </div>
-              </>
-            ))}
+    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Mes Projets
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Découvrez quelques-uns de mes projets récents développés avec passion
+          </p>
         </div>
-      )}
-    </>
+
+        {repos.isSuccess && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {repos.data.map((repo) => (
+              <div
+                key={repo.id}
+                className="bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
+              >
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center space-x-2">
+                      <FiGithub className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white truncate">
+                        {repo.name}
+                      </h3>
+                    </div>
+                    <Link
+                      href={repo.html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    >
+                      <FiExternalLink className="h-4 w-4" />
+                    </Link>
+                  </div>
+
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                    {repo.description || "Aucune description disponible"}
+                  </p>
+
+                  {repo.topics && repo.topics.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {repo.topics.slice(0, 3).map((topic) => (
+                        <span
+                          key={topic}
+                          className="px-2 py-1 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 rounded-md"
+                        >
+                          {topic}
+                        </span>
+                      ))}
+                      {repo.topics.length > 3 && (
+                        <span className="px-2 py-1 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 rounded-md">
+                          +{repo.topics.length - 3}
+                        </span>
+                      )}
+                    </div>
+                  )}
+
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                      {repo.language && (
+                        <div className="flex items-center space-x-1">
+                          <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                          <span>{repo.language}</span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex items-center space-x-1 text-sm text-gray-500 dark:text-gray-400">
+                      <FiCalendar className="h-3 w-3" />
+                      <span>
+                        {new Date(repo.updated_at).toLocaleDateString('fr-FR', {
+                          month: 'short',
+                          year: 'numeric'
+                        })}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="px-6 pb-6">
+                  <Link
+                    href={repo.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 group-hover:text-blue-600 dark:group-hover:text-blue-400"
+                  >
+                    Voir sur GitHub
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="text-center mt-12">
+          <Link
+            href="https://github.com/montenegroPatrick"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-2 px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+          >
+            <FiGithub className="h-5 w-5" />
+            <span>Voir tous mes projets</span>
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }
 
