@@ -58,12 +58,13 @@ function ProjectPrez() {
             {repos.data.map((repo) => (
               <div
                 key={repo.id}
-                className="bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
+                className="bg-white dark:bg-gray-900 h-90 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group flex flex-col"
               >
-                <div className="p-6">
+                {/* Header section - fixed height */}
+                <div className="p-6 flex-shrink-0">
                   <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center space-x-2">
-                      <FiGithub className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                    <div className="flex items-center space-x-2 flex-1 min-w-0">
+                      <FiGithub className="h-5 w-5 text-gray-600 dark:text-gray-400 flex-shrink-0" />
                       <h3 className="text-xl font-semibold text-gray-900 dark:text-white truncate">
                         {repo.name}
                       </h3>
@@ -72,35 +73,46 @@ function ProjectPrez() {
                       href={repo.html_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      className="p-2 text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex-shrink-0"
                     >
                       <FiExternalLink className="h-4 w-4" />
                     </Link>
                   </div>
+                </div>
 
+                {/* Content section - flexible height */}
+                <div className="px-6 flex-1 flex flex-col">
+                  {/* Description */}
                   <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
                     {repo.description || "Aucune description disponible"}
                   </p>
 
-                  {repo.topics && repo.topics.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {repo.topics.slice(0, 3).map((topic) => (
-                        <span
-                          key={topic}
-                          className="px-2 py-1 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 rounded-md"
-                        >
-                          {topic}
-                        </span>
-                      ))}
-                      {repo.topics.length > 3 && (
-                        <span className="px-2 py-1 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 rounded-md">
-                          +{repo.topics.length - 3}
-                        </span>
-                      )}
-                    </div>
-                  )}
+                  {/* Topics section - fixed height zone */}
+                  <div className="mb-4 h-12 flex items-start">
+                    {repo.topics && repo.topics.length > 0 && (
+                      <div className="flex flex-wrap gap-2">
+                        {repo.topics.slice(0, 3).map((topic) => (
+                          <span
+                            key={topic}
+                            className="px-2 py-1 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 rounded-md"
+                          >
+                            {topic}
+                          </span>
+                        ))}
+                        {repo.topics.length > 3 && (
+                          <span className="px-2 py-1 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 rounded-md">
+                            +{repo.topics.length - 3}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+                  {/* Spacer to push footer to bottom */}
+                  <div className="flex-1"></div>
+
+                  {/* Footer info - fixed at bottom */}
+                  <div className="flex items-center justify-between pb-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                     <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
                       {repo.language && (
                         <div className="flex items-center space-x-1">
@@ -121,7 +133,8 @@ function ProjectPrez() {
                   </div>
                 </div>
 
-                <div className="px-6 pb-6">
+                {/* Button section - fixed at bottom */}
+                <div className="px-6 pb-6 flex-shrink-0">
                   <Link
                     href={repo.html_url}
                     target="_blank"

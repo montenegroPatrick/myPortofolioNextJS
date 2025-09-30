@@ -8,8 +8,17 @@ export default function Home() {
   const [dark, setDark] = useState(true);
 
   useEffect(() => {
-    const isDark = localStorage.getItem('darkMode') === 'true';
+    // Récupère la préférence du localStorage, par défaut true (dark mode)
+    const storedDarkMode = localStorage.getItem('darkMode');
+    const isDark = storedDarkMode !== null ? storedDarkMode === 'true' : true;
+    
     setDark(isDark);
+    
+    // Si c'est la première visite, sauvegarde la préférence par défaut
+    if (storedDarkMode === null) {
+      localStorage.setItem('darkMode', 'true');
+    }
+    
     if (isDark) {
       document.documentElement.classList.add('dark');
     } else {
